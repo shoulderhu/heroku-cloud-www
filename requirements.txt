@@ -7,4 +7,5 @@ Jinja2==2.10
 MarkupSafe==1.1.1
 py4j==0.10.7
 pyspark==2.4.1
+python-dotenv==0.10.1
 Werkzeug==0.15.2
