@@ -12,6 +12,9 @@ def create_app(env):
 
     # print(app.config, file=sys.stdout)
 
+    from .main import main
+    app.register_blueprint(main)
+
     from .api import api
     app.register_blueprint(api, url_prefix="/api")
 
