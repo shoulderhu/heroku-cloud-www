@@ -2,6 +2,7 @@ import os
 import sys
 from app import create_app
 from dotenv import load_dotenv
+from pyspark import SparkConf, SparkContext
 
 load_dotenv()
 app = create_app(os.environ.get("FLASK_CONFIG") or "default")

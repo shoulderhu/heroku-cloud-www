@@ -9,6 +9,7 @@ class Config:
 class DevelopmentConfig(Config):
     ENV = "development"
     DEBUG = True
+    API_HOST = "http://127.0.0.1:5000"
 
 
 class ProductionConfig(Config):
@@ -16,6 +17,7 @@ class ProductionConfig(Config):
 
 
 class HerokuConfig(Config):
+    API_HOST = "https://big-data-www.herokuapp.com"
     pass
 
 
