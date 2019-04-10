@@ -9,3 +9,11 @@ def index():
     text = get("api.index")
     #print(type(current_app.config["API_HOST"]), file=sys.stdout)
     return text["data"]
+
+@main.route("/hello")
+def index2():
+    return "index"
+
+@main.route("/hello4")
+def index4():
+    return "index4"
