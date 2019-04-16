@@ -38,4 +38,4 @@ def delete_sessions():
 
     for session in resp["sessions"]:
         req.delete(host + "/sessions/" + str(session["id"]))
-        print("delete_session: " + session["id"], file=sys.stdout)
+        print("delete_session: " + str(session["id"]), file=sys.stdout)
