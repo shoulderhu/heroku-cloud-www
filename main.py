@@ -14,8 +14,8 @@ if os.environ.get("WERKZEUG_RUN_MAIN"):
 app = create_app(os.environ.get("FLASK_CONFIG") or "default")
 
 # spark
-if os.environ.get("WERKZEUG_RUN_MAIN"):
-    create_spark()
+# if os.environ.get("WERKZEUG_RUN_MAIN"):
+create_spark()
 
 
 if __name__ == "__main__":
