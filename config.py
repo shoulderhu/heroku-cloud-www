@@ -10,7 +10,7 @@ class DevelopmentConfig(Config):
     ENV = "development"
     DEBUG = True
     API_HOST = "http://127.0.0.1:5000"
-    LIVY_HOST = "http://192.168.1.100:8998"
+    LIVY_HOST = "http://192.168.1.100:2096"
 
 
 class ProductionConfig(Config):
@@ -19,7 +19,7 @@ class ProductionConfig(Config):
 
 class HerokuConfig(Config):
     API_HOST = "https://big-data-www.herokuapp.com"
-    LIVY_HOST = "http://shoulderhu.tk:8998"
+    LIVY_HOST = "https://shoulderhu.tk:2096"
 
 
 config = {

@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+
+<!-- Attributes for the HTML tag. -->
+{% block html_attribs %}
+  {{ super() }}
+  lang="en"
+{% endblock %}
+
+<!-- Contains all <meta> tags inside head. -->
+{% block metas %}
+  {{ super() }}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#212121">
+{% endblock %}
+
+<!-- Contains all CSS style <link> tags inside head. -->
+{% block styles %}
+  {{ super() }}
+  <link rel="shortcut icon"
+        href="{{ url_for("static", filename="favicon.ico") }}"
+        type="image/x-icon">
+  <link rel="icon"
+        href="{{ url_for("static", filename="favicon.ico") }}"
+        type="image/x-icon">
+{% endblock %}

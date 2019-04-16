@@ -1,6 +1,8 @@
 import sys
+
 from config import config
 from flask import Flask
+from flask_bootstrap import Bootstrap
 from flask_sslify import SSLify
 
 
@@ -8,8 +10,11 @@ def create_app(env):
     app = Flask(__name__)
     app.config.from_object(config[env])
 
+    # Bootstrap
+    Bootstrap(app)
+
     # SSL
-    sslify = SSLify(app, permanent=True)
+    SSLify(app, permanent=True)
 
     #app.logger.debug(StreamHandler().)
 

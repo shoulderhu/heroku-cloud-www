@@ -1,5 +1,5 @@
 import sys
-from flask import current_app as app, url_for, json
+from flask import render_template
 from . import main
 from app.util.api import get
 
@@ -10,9 +10,10 @@ def index():
     #print(type(current_app.config["API_HOST"]), file=sys.stdout)
     return text["data"]
 
-@main.route("/hello")
-def index2():
-    return "index"
+
+@main.route("/test")
+def test():
+    return render_template("index.html")
 
 @main.route("/hello4")
 def index4():
