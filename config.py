@@ -4,6 +4,8 @@ import os
 class Config:
     SECRET_KEY = os.urandom(16)
     JSON_SORT_KEYS = False
+
+    # Apache Livy
     LIVY_HOST = "https://shoulderhu.tk:2096"
     LIVY_DATA = {"kind": "pyspark", "name": "big-data-www"}
     LIVY_SSID = ""
@@ -17,11 +19,11 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    pass
-
-
-class HerokuConfig(Config):
     API_HOST = "https://big-data-www.herokuapp.com"
+
+
+class HerokuConfig(ProductionConfig):
+    pass
 
 
 config = {

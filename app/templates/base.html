@@ -1,25 +1,41 @@
-{% extends "bootstrap/base.html" %}
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}
+  lang="en"{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
 
-<!-- Attributes for the HTML tag. -->
-{% block html_attribs %}
-  {{ super() }}
-  lang="en"
-{% endblock %}
+    {%- block metas %}
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="theme-color" content="#212121">
+    {%- endblock metas %}
 
-<!-- Contains all <meta> tags inside head. -->
-{% block metas %}
-  {{ super() }}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="theme-color" content="#212121">
-{% endblock %}
+    {%- block styles %}
+      <!-- favicon.ico -->
+      <link rel="shortcut icon"
+            href="{{ url_for("static", filename="ico/favicon.ico") }}"
+            type="image/x-icon">
+      <link rel="icon"
+            href="{{ url_for("static", filename="ico/favicon.ico") }}"
+            type="image/x-icon">
+    {%- endblock styles %}
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+    {% block navbar %}
+    {%- endblock navbar %}
+    {% block content -%}
+    {%- endblock content %}
 
-<!-- Contains all CSS style <link> tags inside head. -->
-{% block styles %}
-  {{ super() }}
-  <link rel="shortcut icon"
-        href="{{ url_for("static", filename="favicon.ico") }}"
-        type="image/x-icon">
-  <link rel="icon"
-        href="{{ url_for("static", filename="favicon.ico") }}"
-        type="image/x-icon">
-{% endblock %}
+    {% block scripts %}
+    {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}
