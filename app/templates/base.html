@@ -5,7 +5,7 @@
 {%- block html %}
   <head>
     {%- block head %}
-    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+    <title>{% block title %}{{title}}{% endblock title %}</title>
 
     {%- block metas %}
       <meta name="viewport"
@@ -17,10 +17,10 @@
     {%- block styles %}
       <!-- favicon.ico -->
       <link rel="shortcut icon"
-            href="{{ url_for("static", filename="ico/favicon.ico") }}"
+            href="{{ url_for("static", filename="img/favicon.ico") }}"
             type="image/x-icon">
       <link rel="icon"
-            href="{{ url_for("static", filename="ico/favicon.ico") }}"
+            href="{{ url_for("static", filename="img/favicon.ico") }}"
             type="image/x-icon">
     {%- endblock styles %}
     {%- endblock head %}

@@ -1,2 +1,27 @@
 {% extends "bootstrap.html" %}
-{% block title %}This is an example page{% endblock %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="card-deck">
+      {% for card in cards %}
+        <div class="card text-white bg-dark mb-4">
+          <div class="view overlay">
+            <img class="card-img-top"
+                 src="{{ url_for("static", filename=card["img"]) }}">
+            <div class="mask rgba-white-slight"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ card["title"] }}</h4>
+            <hr class="hr-light">
+            <p class="card-text">{{ card["text"] }}</p>
+            <a class="white-text d-flex justify-content-end"
+               href="{{ url_for(card["url"]) }}">
+              <h5>Read more <i class="fas fa-angle-double-right"></i></h5>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
