@@ -14,9 +14,8 @@ if os.path.exists(dotenv_path):
 app = create_app(os.environ.get("FLASK_CONFIG") or "default")
 
 # spark
-#if not app.debug or os.environ.get("WERKZEUG_RUN_MAIN"):
-#    app.config["LIVY_SSID"] = create_spark(app.config["LIVY_HOST"],
-#                                           app.config["LIVY_DATA"])
+if not app.debug or os.environ.get("WERKZEUG_RUN_MAIN"):
+    create_spark()
 
 if __name__ == "__main__":
     app.run()

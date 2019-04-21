@@ -8,18 +8,67 @@
 
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet"
+        href="{{ url_for("static", filename="css/student.css") }}">
 {% endblock %}
 
 {% block content %}
   <div class="container">
-    <select class="selectpicker" data-live-search="true">
-      <option>學校名稱</option>
-      <option>日間/進修別</option>
-      <option>年級</option>
-</select>
+    <button type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#modal">
+      filter
+    </button>
 
+    <div class="card p-2 mb-5 bg-dark">
+      <table id="table" class="table table-striped text-white">
+        <thead>
+          <tr>
+            <th>學校名稱</th>
+            <th>日間/進修別</th>
+            <th>等級別</th>
+            <th>學生人數</th>
+            <th>縣市名稱</th>
+            <th>學年度</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
   </div>
 
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">資料篩選</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+           {% for key, val in col.items() %}
+             <div class="form-group">
+               <label>{{ key }}</label>
+               <select class="selectpicker" id="{{ key }}"
+                       data-live-search="{{ "true" if val | length > 30 else "false" }}">
+                 {% for v in val %}
+                   <option value="{{ v }}">{{ v }}</option>
+                 {% endfor %}
+               </select>
+             </div>
+           {% endfor %}
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark"
+                  id="btn-filter"
+                  data-dismiss="modal">篩選</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block scripts %}

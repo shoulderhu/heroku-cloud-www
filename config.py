@@ -5,12 +5,6 @@ class Config:
     SECRET_KEY = os.urandom(16)
     JSON_SORT_KEYS = False
 
-    # Apache Livy
-    LIVY_HOST = "https://shoulderhu.tk:2096"
-    LIVY_DATA = {"kind": "pyspark", "name": "big-data-www"}
-    LIVY_SSID = ""
-    LIVY_STATEMENT = ""
-
 
 class DevelopmentConfig(Config):
     ENV = "development"
