@@ -104,7 +104,6 @@ def to_int(x):
     for i, j in enumerate(x[3:-2]):
         x[i + 3] = int(j)
     return x
-
 def student_filter(school=None, div=None, level=None, grade=None, gender=None, loc=None, year=None):
     filter_data = data
     
@@ -118,8 +117,7 @@ def student_filter(school=None, div=None, level=None, grade=None, gender=None, l
         filter_data = filter_data.filter(lambda x: x[19] == loc)
     if year:
         filter_data = filter_data.filter(lambda x: x[20] == year)
-    
-    if level and grade:
+    if grade:
         if grade == "一年級":
             filter_data = filter_data.map(lambda x: x[0:5] + x[19:])
         elif grade == "二年級":
@@ -140,7 +138,7 @@ def student_filter(school=None, div=None, level=None, grade=None, gender=None, l
             filter_data = filter_data.map(lambda x: x[0:4] + x[5:])
         elif gender == "女生":
             filter_data = filter_data.map(lambda x: x[0:3] + x[4:])
-    elif level and grade == None and gender:
+    if grade == None and gender:
         if gender == "男生":
             filter_data = filter_data.map(lambda x: x[0:3] + x[3:18:2] + x[19:])
         elif gender == "女生":

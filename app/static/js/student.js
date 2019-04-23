@@ -12,9 +12,9 @@ $(document).ready(function() {
       "loc": $("#縣市").val(),
     }
   }
-
+  //http://127.0.0.1:5000/api/student
   var table = $("#table").DataTable({
-    "ajax": {//http://127.0.0.1:5000
+    "ajax": {
       "url": "https://big-data-www.herokuapp.com/api/student",
       "type": "POST",
       "data": getData
@@ -24,6 +24,9 @@ $(document).ready(function() {
 
   $("#btn-filter").click(function() {
 
-    table.ajax.reload();
+    table.ajax.reload(function() {
+
+      $("#alert").fadeTo(2000, 500).slideUp(500);
+    });
   });
 });
