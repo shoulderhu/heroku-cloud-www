@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from . import api
-from app.util.spark import create_spark, post_statements
+from app.util.spark import post_statements
 
 
 @api.before_request

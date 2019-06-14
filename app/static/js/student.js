@@ -15,7 +15,7 @@ $(document).ready(function() {
   //http://127.0.0.1:5000/api/student
   var table = $("#table").DataTable({
     "ajax": {
-      "url": "https://big-data-www.herokuapp.com/api/student",
+      "url": "https://cloud-www.herokuapp.com/api/student",
       "type": "POST",
       "data": getData
     }

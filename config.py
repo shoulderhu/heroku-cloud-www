@@ -13,7 +13,7 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    API_HOST = "https://big-data-www.herokuapp.com"
+    API_HOST = os.environ.get("API_HOST")
 
 
 class HerokuConfig(ProductionConfig):
