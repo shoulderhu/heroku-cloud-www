@@ -1,16 +1,19 @@
 {
   "data": [
-    { "img": "img/nature-72.jpg",
+    {
+      "img": "img/nature-72.jpg",
       "title": "大專院校校別學生數",
       "text": "全臺灣大專校院校別學生數",
       "url": "www.student"
     },
-    { "img": "img/nature-74.jpg",
-      "title": "Unknown",
-      "text": "Comming Soon...                                   ",
-      "url": "www.index"
+    {
+      "img": "img/nature-74.jpg",
+      "title": "空氣品質指標(AQI)",
+      "text": "...                                               ",
+      "url": "www.aqi"
     },
-    { "img": "img/nature-75.jpg",
+    {
+      "img": "img/nature-75.jpg",
       "title": "Unknown",
       "text": "Comming Soon...                                   ",
       "url": "www.index"

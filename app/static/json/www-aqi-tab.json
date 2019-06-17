@@ -1,0 +1,49 @@
+[
+  {
+    "tab": "AQI",
+    "tabpanel": "各測項即時濃度依下列公式計算後，再對應下表得出O3、PM2.5、PM10、CO、SO2、NO2等6個測項之即時副指標值，再取出其中最大值為即時空氣品質指標，該最大值測項即為指標污染物：",
+    "id": "aqi",
+    "active": true
+  },
+  {
+    "tab": "O3,8hr",
+    "tabpanel": "取最近連續8小時移動平均值。",
+    "id": "o3-8",
+    "active": false
+  },
+  {
+    "tab": "O3",
+    "tabpanel": "取即時濃度值。",
+    "id": "o3",
+    "active": false
+  },
+  {
+    "tab": "PM2.5",
+    "tabpanel": "0.5 × 前12小時平均 + 0.5 × 前4小時平均 (前4小時2筆有效，前12小時6筆有效）。",
+    "id": "pm25",
+    "active": false
+  },
+  {
+    "tab": "PM10",
+    "tabpanel": "0.5 × 前12小時平均 + 0.5 × 前4小時平均 (前4小時2筆有效，前12小時6筆有效）。",
+    "id": "pm10",
+    "active": false
+  },
+  {
+    "tab": "CO,8hr",
+    "tabpanel": "取最近連續8小時移動平均值。",
+    "id": "co",
+    "active": false
+  },
+  {
+    "tab": "SO2",
+    "tabpanel": "取即時濃度值。",
+    "id": "so2",
+    "active": false
+  },
+  {
+    "tab": "NO2",
+    "tabpanel": "取即時濃度值。",
+    "id": "no2"
+  }
+]

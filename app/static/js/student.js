@@ -12,10 +12,11 @@ $(document).ready(function() {
       "loc": $("#縣市").val(),
     }
   }
+  //"https://cloud-www.herokuapp.com/api/student"
   //http://127.0.0.1:5000/api/student
   var table = $("#table").DataTable({
     "ajax": {
-      "url": "https://cloud-www.herokuapp.com/api/student",
+      "url": "http://127.0.0.1:5000/api/student",
       "type": "POST",
       "data": getData
     }

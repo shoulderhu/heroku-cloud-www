@@ -1,11 +1,11 @@
 import json
 import requests as req
 import sys
-import time
+from time import sleep
 from threading import Lock
 
 host = "https://shoulderhu.tk:2096"
-data = {"kind": "pyspark", "name": "big-data-www"}
+data = {"kind": "pyspark", "name": "cloud-www"}
 headers = {"Content-Type": "application/json"}
 ssid = ""
 lock = Lock()
@@ -15,15 +15,15 @@ def create_spark():
     with lock:
         global ssid
 
-        if ssid != "":
-            state = get_sessions_state()
-            if state != "idle" and state != "busy":
-                delete_sessions()
-                ssid = ""
-                print("delete session " + state, file=sys.stdout)
-            else:
-                print("get session " + state, file=sys.stdout)
-                return
+        #if ssid != "":
+            #state = get_sessions_state()
+            #if state != "idle" and state != "busy":
+                #delete_sessions()
+                #ssid = ""
+                #print("delete session " + state, file=sys.stdout)
+            #else:
+                #print("get session " + state, file=sys.stdout)
+                #return
 
         tmpid = get_sessions()
 
@@ -36,14 +36,15 @@ def create_spark():
             while True:
                 state = get_sessions_state()
                 if state != "idle":
-                    time.sleep(2)
+                    sleep(3)
                 else:
                     break
-            post_statements(code_init(), False)
+            #post_statements(code_init(), False)
+            post_statements(code_init2(), False)
 
 
 def get_sessions():
-    resp = req.get(host + "/sessions").json()
+    resp = req.get(f"{host}/sessions", headers=headers, verify=False).json()
     for session in resp["sessions"]:
         if session["name"] == data["name"]:
             return str(session["id"])
@@ -51,38 +52,36 @@ def get_sessions():
 
 
 def get_sessions_state():
-    resp = req.get(f"{host}/sessions/{ssid}/state").json()
+    resp = req.get(f"{host}/sessions/{ssid}/state", headers=headers, verify=False).json()
+    print(resp["state"])
     return resp["state"]
 
 
 def post_sessions():
-    resp = req.post(host + "/sessions",
-                    data=json.dumps(data)).json()
+    resp = req.post(f"{host}/sessions",
+                    data=json.dumps(data), headers=headers, verify=False).json()
     return str(resp["id"])
 
 
 def post_statements(code, out=True):
-    code_data = {
-        "code": code
-    }
-    resp = req.post(f"{host}/sessions/{ssid}/statements",
-                    data=json.dumps(code_data),
-                    headers=headers)
-    statement_url = resp.headers["Location"]
+    statements_url = f"{host}/sessions/{ssid}/statements"
+    code_data = {"code": code}
+    resp = req.post(statements_url, data=json.dumps(code_data),
+                    headers=headers, verify=False).json()
 
     if out:
+        statement_url = f"{statements_url}/{resp['id']}"
         return get_statements(statement_url)
 
 
 def get_statements(statement_url):
-    while(True):
-        resp = req.get(host + statement_url).json()
-        resp_output = resp["output"]
-        if resp_output["status"] != "ok":
-            time.sleep(1)
+    while True:
+        resp = req.get(statement_url, headers=headers, verify=False).json()
+        if resp["state"] != "available":
+            sleep(1)
             continue
         else:
-            resp_data = resp_output["data"]
+            resp_data = resp["output"]["data"]
             if "application/json" in resp_data:
                 return resp_data["application/json"]
             elif "text/plain" in resp_data:
@@ -90,7 +89,7 @@ def get_statements(statement_url):
 
 
 def delete_sessions():
-    req.delete(host + "/sessions/" + ssid)
+    req.delete(f"{host}/sessions/{ssid}", headers=headers, verify=False)
 
 
 def code_init():
@@ -146,4 +145,16 @@ def student_filter(school=None, div=None, level=None, grade=None, gender=None, l
     
     filter_data = filter_data.map(to_int)
     return filter_data.map(lambda x: x[0:3] + [sum(x[3:-2])] + x[-2:]).collect()
+"""
+
+
+def code_init2():
+    return """       
+def aqi_filter():
+    text = sc.textFile("hdfs://name:9000/csv/aqi.csv")
+    first = text.first()
+    data = text.filter(lambda x: x != first)
+    data1 = data.map(lambda x: x.split(","))
+    data2 = data1.filter(lambda x: x[6] == "左營")
+    return data2.map(lambda x: x[3:4] + x[8:9]).collect()
 """

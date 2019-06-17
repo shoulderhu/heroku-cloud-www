@@ -13,7 +13,7 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    API_HOST = os.environ.get("API_HOST")
+    API_HOST = "http://127.0.0.1:5000" #os.environ.get("API_HOST")
 
 
 class HerokuConfig(ProductionConfig):
