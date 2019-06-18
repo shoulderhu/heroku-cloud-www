@@ -65,7 +65,7 @@ $(document).ready(function() {
 
         toggle.prop("disabled", true).change();
 
-        $.post("http://114.32.4.146:5000/api/aqi", {"tab": tab,
+        $.post("https://shoulderhu.tk:8443/api/aqi", {"tab": tab,
             "date": $("#日期").val(), "zone": $("#空品區").val()}, function(res) {
 
             chart.data.labels = res["labels"];

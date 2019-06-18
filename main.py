@@ -16,4 +16,5 @@ app = create_app(os.environ.get("FLASK_CONFIG") or "default")
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", debug=False, port=8443,
+            ssl_context=("cert.pem", "privkey.pem"))

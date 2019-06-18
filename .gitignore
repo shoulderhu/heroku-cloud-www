@@ -9,3 +9,7 @@ venv
 
 # pycharm
 .idea
+
+cert.pem
+
+privkey.pem

@@ -9,7 +9,7 @@ from time import time
 
 class AQI:
     def __init__(self, file=""):
-        sc = SparkContext()
+        sc = SparkContext(master="local[*]")
         print(sc.master)
         self.csv = AQI.read_csv(sc, "hdfs://name:9000/csv/aqi.csv")
         self.csv.persist()
