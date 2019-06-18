@@ -27,10 +27,15 @@
           </select>
         {% endfor %}
         <label style="margin-left: 10px">顯示/隱藏</label>
-        <input id="toggle" type="checkbox"
+        <input id="toggle" type="checkbox" data-toggle="toggle"
                data-on="<i class='fas fa-eye'></i> 顯示"
                data-off="<i class='fas fa-eye-slash'></i> 隱藏"
                data-onstyle="dark">
+        <button type="button" class="btn btn-dark"
+                style="margin-left: 150px"
+                data-toggle="modal" data-target="#modal">
+            說明
+        </button>
       </div>
       <div class="card-body">
         <ul class="nav nav-tabs" id="tab" role="tablist">
@@ -49,11 +54,25 @@
             <div class="tab-pane fade {{ "show active" if t["active"] == True else "" }}"
                  id="{{ t["id"] }}" role="tabpanel">
               <br>{{ t["tabpanel"] }}<br><br>
-              {% if t["active"] == True %}
-                <img class="card-img-top" src="{{ url_for("static", filename="img/aqi-table.png") }}">
-              {% endif %}
             </div>
           {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document" style="width:90%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">說明</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img style="width: 100%" src="{{ url_for("static", filename="img/aqi1.png") }}"><br><br>
+          <img style="width: 100%" src="{{ url_for("static", filename="img/aqi2.png") }}"><br><br>
+          <img style="width: 100%" src="{{ url_for("static", filename="img/aqi3.png") }}">
         </div>
       </div>
     </div>

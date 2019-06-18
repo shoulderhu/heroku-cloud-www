@@ -1,3 +1,4 @@
+import os
 import sys
 
 from config import config
@@ -12,14 +13,15 @@ def create_app(env):
     # SSL
     SSLify(app, permanent=True)
 
-    #app.logger.debug(StreamHandler().)
+    app.logger.info(f"[INFO] FLASK_BLUEPRINT: {os.environ.get('FLASK_BLUEPRINT')}")
 
-    # app.logger.info("123")
-    from .www import www
-    app.register_blueprint(www)
+    if os.environ.get("FLASK_BLUEPRINT") != "API":
+        from .www import www
+        app.register_blueprint(www)
 
-    from .api import api
-    app.register_blueprint(api, url_prefix="/api")
+    if os.environ.get("FLASK_BLUEPRINT") != "WWW":
+        from .api import api
+        app.register_blueprint(api, url_prefix="/api")
 
     return app
 

@@ -14,9 +14,6 @@ if os.path.exists(dotenv_path):
 
 app = create_app(os.environ.get("FLASK_CONFIG") or "default")
 
-# spark
-#if not app.debug or os.environ.get("WERKZEUG_RUN_MAIN"):
-
 
 if __name__ == "__main__":
     app.run()
