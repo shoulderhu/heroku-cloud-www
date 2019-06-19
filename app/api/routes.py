@@ -355,7 +355,7 @@ def api():
         ret = aqi.filter_csv(tab, date, zone)
 
     resp = jsonify(ret)
-    resp.headers["Access-Control-Allow-Origin"] = "*"
+    resp.headers["Access-Control-Allow-Origin"] = "https://cloud-www.herokuapp.com"
     return resp
 
 
