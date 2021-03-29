@@ -40,7 +40,7 @@ prometheus-client==0.7.0
 prompt-toolkit==2.0.9
 ptyprocess==0.6.0
 py4j==0.10.7
-Pygments==2.4.2
+Pygments==2.7.4
 pyrsistent==0.15.2
 pyspark==2.4.0
 pyspark-stubs==2.4.0.post1
